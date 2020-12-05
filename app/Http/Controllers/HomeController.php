@@ -32,6 +32,7 @@ class HomeController extends Controller
 
         $stories = Story::select('*')
             ->where('writer_id', $user->id)
+            ->orderByRaw('stories.id DESC')
             ->get();
 
         $comments = DB::table('comments')
