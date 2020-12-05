@@ -13,6 +13,7 @@ class WelcomeController extends Controller
         $stories = DB::table('stories')
                     ->join('users', 'stories.writer_id', '=', 'users.id')
                     ->select('stories.*', 'users.name', 'users.avatar')
+                    ->orderByRaw('stories.id DESC')
                     ->get();
         
         $likes = DB::table('likes')
